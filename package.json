@@ -1,0 +1,38 @@
+{
+  "name": "uzbechka",
+  "version": "3.1.7",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "body-scroll-lock": "^2.6.1",
+    "core-js": "^2.6.5",
+    "gsap": "^2.1.2",
+    "leaflet": "^1.5.1",
+    "nprogress": "^0.2.0",
+    "smooth-scroll": "^16.1.0",
+    "vue": "^2.6.10",
+    "vue-imask": "^5.1.6",
+    "vue-load-image": "^0.1.8",
+    "vue-owl-carousel": "^2.0.3",
+    "vue-router": "^3.0.3",
+    "vue2-leaflet": "^2.2.1",
+    "vuejs-paginate": "^2.1.0",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.21"
+  }
+}

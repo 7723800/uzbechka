@@ -1,0 +1,258 @@
+$mainGradient: linear-gradient(180deg, #610A8A 0%, #3D244F 100%);
+$yellowColor: #F6A20A;
+$borderRadius: 5px;
+$imgShadow: 0 3px 7px 0 rgba(0,0,0,.2);
+$purpleСolour: #610A8A;
+$greyColor: #F1F1F1;
+$buttonShadow: 0 3px 7px 0 rgba(123,25,168,.3);
+$boxShadow: 0 2px 4px 0 rgba(0,0,0,.1);
+$headerHeight: 50px;
+$inputBtnHeight: 40px;
+$borderRadiusBtn: 20px;
+$heightPixels: 40px;
+$background: #F8F8F8;
+
+$headerHeightXL: 90px;
+
+
+
+@mixin linePseudo($top, $bottom: auto, $right: -15px, $left: -15px) {
+	content: "";
+	position: absolute;
+	height: 1px;
+	top: $top;
+	bottom: $bottom;
+	left: $left;
+	right: $right;
+	background: $greyColor;
+}
+@mixin quantityBtn($leftRadius, $rightRadius) {
+    cursor: pointer;
+	background: $mainGradient;
+    border: none;
+    color: $greyColor;
+    padding: 0;
+    margin: 0;
+    float: left;
+    box-shadow: $buttonShadow;
+    height: $inputBtnHeight;
+    width: 35px;
+    font-size: 140%;
+    line-height: $inputBtnHeight;
+    text-align: center;
+    transition: all 0.4s linear;
+    border-top-left-radius: $leftRadius;
+    border-bottom-left-radius: $leftRadius;
+    border-top-right-radius: $rightRadius;
+    border-bottom-right-radius: $rightRadius;
+}
+@mixin empty {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    svg {
+        fill: #999;
+    }
+    @include for-desktop-up{
+        overflow-y: auto;
+    }
+}
+@mixin menuHeader($includeToolip: true) {
+    height: 40px;
+    width: 100%;
+    
+    background: #fff;
+    z-index: 101;
+    
+    box-shadow: $boxShadow;
+    &::before {
+        @include linePseudo($top: auto, $bottom: 0, $right: 0, $left: 0);
+    }
+    .container {
+        width: 100%;
+        padding: 0;
+        height: 100%;
+    }
+    .wrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: space-between;
+    }
+    .backward {
+        display: flex;
+        width: 31%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid $greyColor;
+        svg {
+            fill: $yellowColor;
+        }
+        span {
+            margin-left: 20px;
+        }
+    }
+    .title {
+        margin: 0 auto 0 0;
+        padding: 0 20px;
+    }
+    .info {
+        position: relative;
+        width: 80px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        svg {
+            fill: $yellowColor;
+        }
+        .toolip {
+            @if $includeToolip {
+                @include toolip($padding: 15px 5px, $top: 45px, $right: 15px,
+                $rightBefore: 16%, $bottomBefore: 100%, $borderColor: transparent transparent #999 transparent);
+                }
+            }
+        }
+    }
+@mixin toolip($padding, $top: auto, $bottom: auto, $right, $topBefore: auto, $bottomBefore: auto, 
+    $rightBefore, $borderColor) {
+    width: 270px;
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    padding: $padding;
+    border-radius: 5px;
+    position: absolute;
+    top: $top;
+    bottom: $bottom;
+    right: $right;
+    transition: opacity 0.3s;
+    font-size: 13px;
+    font-family: UzbechkaThin;
+    box-shadow: $imgShadow;
+    z-index: 1;
+    &::before {
+        content: "";
+        position: absolute;
+        top: $topBefore;
+        bottom: $bottomBefore;
+        right: $rightBefore;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: $borderColor;
+    }
+}
+@mixin form($margin) {
+    padding: 15px 0;
+    input[type="text"], input[type="number"], input[type="tel"], select, textarea {
+        display: block;
+        background: #fff;
+        height: 40px;
+        border: 1px solid $greyColor;
+        border-radius: 5px;
+        margin: $margin;
+        padding: 0 10px;
+        width: 100%;
+        font-size: 100%;
+        transition: all .5s ease;
+        &:focus {
+            border: 1px solid $yellowColor;
+        }
+    }
+    label {
+        margin-left: 3px;
+    }
+}
+@mixin btn {
+    width: auto;
+    height: auto;
+    padding: 5px 25px;
+    border-radius: 30px;
+}
+@mixin loader {
+    .lds-ripple {
+        margin: 0 auto 0;
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+    .lds-ripple div {
+        position: absolute;
+        border: 4px solid $purpleСolour;
+        opacity: 0;
+        border-radius: 50%;
+        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+    .lds-ripple div:nth-child(2) {
+        animation-delay: -0.5s;
+    }
+    @keyframes lds-ripple {
+        0% {
+            top: 28px;
+            left: 28px;
+            width: 0;
+            height: 0;
+            opacity: 1;
+          }
+          100% {
+            top: -1px;
+            left: -1px;
+            width: 58px;
+            height: 58px;
+            opacity: 0;
+          }
+    }
+    .fade-loader-enter-active {
+        transition: opacity .5s
+    }
+    .fade-loader-enter {
+        opacity: 0
+    }
+}
+@mixin incorrect {
+    .incorrect {
+        border: 1px solid red !important;
+    }
+}
+@mixin cartFavSearchHeader {
+    position: fixed;
+    top: $headerHeight;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: $background;
+    z-index: 101;
+    @include for-desktop-up {
+        top: $headerHeightXL;
+    }
+}
+@mixin itemActions ($fill, $width) {
+    position: absolute;
+    right: 0;
+    height: 22%;
+    width: 22%;
+    background-color: rgba(248, 248, 248,  0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        fill: $fill;
+        width: $width; 
+    }
+    @include for-desktop-up {
+        height: 14%;
+        width: 14%;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 1200px) {
+    $headerHeight: 90px;
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+    }
+}
